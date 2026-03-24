@@ -1,0 +1,131 @@
+.header-compact {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: clamp(10px, 3vw, 20px);
+  background-color: #ffe6ea; /* Light pink background */
+  color: #333; /* Dark text */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Logo container */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Bigger logo */
+.logo {
+  width: 60px;    /* increased from 40px */
+  height: 60px;   /* increased from 40px */
+  object-fit: contain;
+}
+
+/* Company Name */
+.company-name {
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+  font-weight: bold;
+  color: #333;
+}
+
+/* Desktop nav */
+.nav {
+  display: flex;
+  gap: 25px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #333;
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  font-weight: 500;
+  position: relative;
+}
+
+.nav a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: #ff7f50;
+  transition: width 0.3s ease;
+}
+
+.nav a:hover::after {
+  width: 100%;
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.hamburger span {
+  width: 26px;
+  height: 3px;
+  background: #333;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.hamburger.open span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Mobile menu */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .nav {
+    position: absolute;
+    top: 75px; /* adjusted to fit bigger logo */
+    left: 0;
+    width: 100%;
+    background-color: #ffe6ea;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 0;
+    transform: translateY(-200%);
+    transition: transform 0.3s ease;
+  }
+
+  .nav.nav-open {
+    transform: translateY(0);
+  }
+}
+
+/* Small mobile */
+@media (max-width: 400px) {
+  .company-name {
+    font-size: 1rem;
+  }
+
+  .nav a {
+    font-size: 0.9rem;
+  }
+
+  .logo {
+    width: 50px;  /* Slightly smaller on very small screens */
+    height: 50px;
+  }
+}
