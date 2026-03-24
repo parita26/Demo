@@ -121,7 +121,7 @@ function Portfolio() {
           {/* Clients Logos */}
           <div className="clients-section">
             <h2>Our Clients </h2>
-            <h2>Alice Brown </h2>
+          
             
             <div className="clients-grid">
               {clients.map((client, index) => (
